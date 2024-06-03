@@ -13,7 +13,7 @@ const channelByUser = async ({ client, setActiveChannel, channel, setChannel }) 
   if (existingChannel) return setActiveChannel(existingChannel);
 
   const newChannel = client.channel('messaging', { members: [channel.id, client.userID] });
-  
+
   setChannel(newChannel)
 
   return setActiveChannel(newChannel);
@@ -28,7 +28,7 @@ const SearchResult = ({ channel, focusedId, type, setChannel, setToggleContainer
         onClick={() => {
           setChannel(channel)
           if(setToggleContainer) {
-            setToggleContainer((prevState) => !prevState)   
+            setToggleContainer((prevState) => !prevState)
           }
         }}
         className={focusedId === channel.id ? 'channel-search__result-container__focused' : 'channel-search__result-container' }
@@ -44,7 +44,7 @@ const SearchResult = ({ channel, focusedId, type, setChannel, setToggleContainer
       onClick={async () => {
         channelByUser({ client, setActiveChannel, channel, setChannel })
         if(setToggleContainer) {
-            setToggleContainer((prevState) => !prevState)   
+            setToggleContainer((prevState) => !prevState)
         }
       }}
       className={focusedId === channel.id ? 'channel-search__result-container__focused' : 'channel-search__result-container' }
@@ -61,15 +61,15 @@ const ResultsDropdown = ({ teamChannels, directChannels, focusedId, loading, set
 
   return (
     <div className='channel-search__results'>
-      <p className='channel-search__results-header'>Channels</p>
+      <p className='channel-search__results-header'>Канали</p>
       {loading && !teamChannels.length && (
         <p className='channel-search__results-header'>
-          <i>Loading...</i>
+          <i>Завантаження...</i>
         </p>
       )}
       {!loading && !teamChannels.length ? (
         <p className='channel-search__results-header'>
-          <i>No channels found</i>
+          <i>Канали не знайдено</i>
         </p>
       ) : (
         teamChannels?.map((channel, i) => (
@@ -83,15 +83,15 @@ const ResultsDropdown = ({ teamChannels, directChannels, focusedId, loading, set
           />
         ))
       )}
-      <p className='channel-search__results-header'>Users</p>
+      <p className='channel-search__results-header'>Користувачі</p>
       {loading && !directChannels.length && (
         <p className='channel-search__results-header'>
-          <i>Loading...</i>
+          <i>Завантаження...</i>
         </p>
       )}
       {!loading && !directChannels.length ? (
         <p className='channel-search__res ults-header'>
-          <i>No direct messages found</i>
+          <i>Прямих повідомлень не знайдено</i>
         </p>
       ) : (
         directChannels?.map((channel, i) => (

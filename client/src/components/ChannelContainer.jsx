@@ -16,14 +16,14 @@ const ChannelContainer = ({ isCreating, setIsCreating, isEditing, setIsEditing, 
         return (
             <div className="channel__container">
                 <EditChannel setIsEditing={setIsEditing} />
-            </div> 
+            </div>
         )
     }
 
     const EmptyState = () => (
         <div className="channel-empty__container">
-            <p className="channel-empty__first">This is the beginning of your chat history.</p>
-            <p className="channel-empty__second">Send messages, attachments, links, emojis, and more!</p>
+            <p className="channel-empty__first">Це початок вашої історії чату.</p>
+            <p className="channel-empty__second">Надсилайте повідомлення, вкладення, посилання, емодзі тощо!</p>
         </div>
     )
 

@@ -24,7 +24,6 @@ const signup = async (req, res) => {
         res.status(200).json({ token, fullName, username, userId, hashedPassword, phoneNumber });
     } catch (error) {
         console.log(error);
-
         res.status(500).json({ message: error });
     }
 };
@@ -32,7 +31,7 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
     try {
         const { username, password } = req.body;
-        
+
         const serverClient = connect(api_key, api_secret, app_id);
         const client = StreamChat.getInstance(api_key, api_secret);
 

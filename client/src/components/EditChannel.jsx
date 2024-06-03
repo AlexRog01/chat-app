@@ -13,9 +13,9 @@ const ChannelNameInput = ({ channelName = '', setChannelName }) => {
 
     return (
         <div className="channel-name-input__wrapper">
-            <p>Name</p>
+            <p>Назва</p>
             <input value={channelName} onChange={handleChange} placeholder="channel-name" />
-            <p>Add Members</p>
+            <p>Додати учасників</p>
         </div>
     )
 }
@@ -31,7 +31,7 @@ const EditChannel = ({ setIsEditing }) => {
         const nameChanged = channelName !== (channel.data.name || channel.data.id);
 
         if(nameChanged) {
-            await channel.update({ name: channelName }, { text: `Channel name changed to ${channelName}`});
+            await channel.update({ name: channelName }, { text: `Назва каналу змінена на ${channelName}`});
         }
 
         if(selectedUsers.length) {
@@ -46,13 +46,13 @@ const EditChannel = ({ setIsEditing }) => {
     return (
         <div className="edit-channel__container">
             <div className="edit-channel__header">
-                <p>Edit Channel</p>
+                <p>Редагувати канал</p>
                 <CloseCreateChannel setIsEditing={setIsEditing} />
             </div>
             <ChannelNameInput channelName={channelName} setChannelName={setChannelName} />
             <UserList setSelectedUsers={setSelectedUsers} />
             <div className="edit-channel__button-wrapper" onClick={updateChannel}>
-                <p>Save Changes</p>
+                <p>Зберегти зміни</p>
             </div>
         </div>
     )

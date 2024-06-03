@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-
-import signinImage from '../assets/signup.jpg';
-
 const cookies = new Cookies();
 
 const initialState = {
@@ -12,7 +9,7 @@ const initialState = {
     password: '',
     confirmPassword: '',
     phoneNumber: '',
-    avatarURL: '',
+    avatarURL: 'no need',
 }
 
 const Auth = () => {
@@ -28,8 +25,7 @@ const Auth = () => {
 
         const { username, password, phoneNumber, avatarURL } = form;
 
-        const URL = 'https://localhost:5000/auth';
-        // const URL = 'https://medical-pager.herokuapp.com/auth';
+        const URL = 'http://localhost:5000/auth';
 
         const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
             username, password, fullName: form.fullName, phoneNumber, avatarURL,
@@ -54,100 +50,85 @@ const Auth = () => {
     }
 
     return (
-        <div className="auth__form-container">
+
             <div className="auth__form-container_fields">
                 <div className="auth__form-container_fields-content">
-                    <p>{isSignup ? 'Sign Up' : 'Sign In'}</p>
+                    <p>{isSignup ? 'Зареєструватись' : 'Увійти'}</p>
                     <form onSubmit={handleSubmit}>
                         {isSignup && (
                             <div className="auth__form-container_fields-content_input">
-                                <label htmlFor="fullName">Full Name</label>
-                                <input 
-                                    name="fullName" 
+                                <label htmlFor="fullName">Повне ім'я</label>
+                                <input
+                                    name="fullName"
                                     type="text"
-                                    placeholder="Full Name"
+                                    placeholder="Повне ім'я"
                                     onChange={handleChange}
                                     required
                                 />
                             </div>
                         )}
                         <div className="auth__form-container_fields-content_input">
-                            <label htmlFor="username">Username</label>
-                                <input 
-                                    name="username" 
+                            <label htmlFor="username">Нікнейм</label>
+                                <input
+                                    name="username"
                                     type="text"
-                                    placeholder="Username"
+                                    placeholder="Нікнейм"
                                     onChange={handleChange}
                                     required
                                 />
                             </div>
                         {isSignup && (
                             <div className="auth__form-container_fields-content_input">
-                                <label htmlFor="phoneNumber">Phone Number</label>
-                                <input 
-                                    name="phoneNumber" 
+                                <label htmlFor="phoneNumber">Мобільний телефон</label>
+                                <input
+                                    name="phoneNumber"
                                     type="text"
-                                    placeholder="Phone Number"
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-                        )}
-                        {isSignup && (
-                            <div className="auth__form-container_fields-content_input">
-                                <label htmlFor="avatarURL">Avatar URL</label>
-                                <input 
-                                    name="avatarURL" 
-                                    type="text"
-                                    placeholder="Avatar URL"
+                                    placeholder="Мобільний телефон"
                                     onChange={handleChange}
                                     required
                                 />
                             </div>
                         )}
                         <div className="auth__form-container_fields-content_input">
-                                <label htmlFor="password">Password</label>
-                                <input 
-                                    name="password" 
+                                <label htmlFor="password">Пароль</label>
+                                <input
+                                    name="password"
                                     type="password"
-                                    placeholder="Password"
+                                    placeholder="Пароль"
                                     onChange={handleChange}
                                     required
                                 />
                             </div>
                         {isSignup && (
                             <div className="auth__form-container_fields-content_input">
-                                <label htmlFor="confirmPassword">Confirm Password</label>
-                                <input 
-                                    name="confirmPassword" 
+                                <label htmlFor="confirmPassword">Підтвердити пароль</label>
+                                <input
+                                    name="confirmPassword"
                                     type="password"
-                                    placeholder="Confirm Password"
+                                    placeholder="Підтвердити пароль"
                                     onChange={handleChange}
                                     required
                                 />
                             </div>
                             )}
                         <div className="auth__form-container_fields-content_button">
-                            <button>{isSignup ? "Sign Up" : "Sign In"}</button>
+                            <button>{isSignup ? "Зареєструватись" : "Увійти"}</button>
                         </div>
                     </form>
                     <div className="auth__form-container_fields-account">
                         <p>
                             {isSignup
-                             ? "Already have an account?" 
-                             : "Don't have an account?"
+                             ? "Вже є аккаунт?"
+                             : "Немає облікового запису?"
                              }
                              <span onClick={switchMode}>
-                             {isSignup ? 'Sign In' : 'Sign Up'}
+                             {isSignup ? 'Увійти' : 'Зареєструватись'}
                              </span>
                         </p>
                     </div>
-                </div> 
+                </div>
             </div>
-            <div className="auth__form-container_image">
-                <img src={signinImage} alt="sign in" />
-            </div>
-        </div>
+
     )
 }
 

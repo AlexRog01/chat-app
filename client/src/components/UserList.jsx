@@ -7,8 +7,8 @@ const ListContainer = ({ children }) => {
     return (
         <div className="user-list__container">
             <div className="user-list__header">
-                <p>User</p>
-                <p>Invite</p>
+                <p>Користувач</p>
+                <p>Запросити</p>
             </div>
             {children}
         </div>
@@ -52,12 +52,12 @@ const UserList = ({ setSelectedUsers }) => {
             if(loading) return;
 
             setLoading(true);
-            
+
             try {
                 const response = await client.queryUsers(
                     { id: { $ne: client.userID } },
                     { id: 1 },
-                    { limit: 8 } 
+                    { limit: 8 }
                 );
 
                 if(response.users.length) {
@@ -78,7 +78,7 @@ const UserList = ({ setSelectedUsers }) => {
         return (
             <ListContainer>
                 <div className="user-list__message">
-                    Error loading, please refresh and try again.
+                  Помилка завантаження, оновіть сторінку та повторіть спробу.
                 </div>
             </ListContainer>
         )
@@ -88,7 +88,7 @@ const UserList = ({ setSelectedUsers }) => {
         return (
             <ListContainer>
                 <div className="user-list__message">
-                    No users found.
+                  Користувачів не знайдено.
                 </div>
             </ListContainer>
         )
@@ -97,10 +97,10 @@ const UserList = ({ setSelectedUsers }) => {
     return (
         <ListContainer>
             {loading ? <div className="user-list__message">
-                Loading users...
+              Завантаження користувачів...
             </div> : (
                 users?.map((user, i) => (
-                  <UserItem index={i} key={user.id} user={user} setSelectedUsers={setSelectedUsers} />  
+                  <UserItem index={i} key={user.id} user={user} setSelectedUsers={setSelectedUsers} />
                 ))
             )}
         </ListContainer>

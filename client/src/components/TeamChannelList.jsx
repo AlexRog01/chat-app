@@ -7,7 +7,7 @@ const TeamChannelList = ({ setToggleContainer, children, error = false, loading,
         return type === 'team' ? (
             <div className="team-channel-list">
                 <p className="team-channel-list__message">
-                    Connection error, please wait a moment and try again.
+                  Помилка підключення, зачекайте трохи та повторіть спробу.
                 </p>
             </div>
         ) : null
@@ -17,7 +17,7 @@ const TeamChannelList = ({ setToggleContainer, children, error = false, loading,
         return (
             <div className="team-channel-list">
                 <p className="team-channel-list__message loading">
-                    {type === 'team' ? 'Channels' : 'Messages'} loading...
+                    {type === 'team' ? 'Channels' : 'Messages'} Завантаження...
                 </p>
             </div>
         )
@@ -29,10 +29,10 @@ const TeamChannelList = ({ setToggleContainer, children, error = false, loading,
                 <p className="team-channel-list__header__title">
                     {type === 'team' ? 'Channels' : 'Direct Messages'}
                 </p>
-                <AddChannel 
+                <AddChannel
                     isCreating={isCreating}
                     setIsCreating={setIsCreating}
-                    setCreateType={setCreateType} 
+                    setCreateType={setCreateType}
                     setIsEditing={setIsEditing}
                     type={type === 'team' ? 'team' : 'messaging'}
                     setToggleContainer={setToggleContainer}

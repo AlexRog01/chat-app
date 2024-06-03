@@ -21,8 +21,8 @@ const ChannelSearch = ({ setToggleContainer }) => {
     const getChannels = async (text) => {
         try {
             const channelResponse = client.queryChannels({
-                type: 'team', 
-                name: { $autocomplete: text }, 
+                type: 'team',
+                name: { $autocomplete: text },
                 members: { $in: [client.userID]}
             });
             const userResponse = client.queryUsers({
@@ -58,16 +58,16 @@ const ChannelSearch = ({ setToggleContainer }) => {
                 <div className="channel-serach__input__icon">
                     <SearchIcon />
                 </div>
-                <input 
-                    className="channel-search__input__text" 
-                    placeholder="Search" 
-                    type="text" 
-                    value={query}  
+                <input
+                    className="channel-search__input__text"
+                    placeholder="Пошук"
+                    type="text"
+                    value={query}
                     onChange={onSearch}
                 />
             </div>
             { query && (
-                <ResultsDropdown 
+                <ResultsDropdown
                     teamChannels={teamChannels}
                     directChannels={directChannels}
                     loading={loading}
